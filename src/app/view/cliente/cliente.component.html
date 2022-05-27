@@ -1,10 +1,10 @@
 <h2>Manutenção de Clientes</h2>
-<ul>
+<!-- <ul>
   <li *ngFor="let c of clientes" > {{c.id}}: {{c.cpf }} - {{ c.nome }}   <button mat-raised-button color="accent" (click)="selecionar(c)"> EDITAR </button>  <button mat-flat-button color="warn" (click)="delete(c.id)">X</button></li>
-</ul>
+</ul> -->
 
 
-<table mat-table [dataSource]="clientes" class="mat-elevation-z8">
+<table mat-table [dataSource]="clientes" class="mat-elevation-z8 table">
 
    <!-- COLUNA Nome-->
   <ng-container matColumnDef="Nome">
@@ -16,6 +16,15 @@
    <ng-container matColumnDef="CPF">
     <th mat-header-cell *matHeaderCellDef>CPF</th>
     <td mat-cell *matCellDef="let cliente"> {{ cliente.cpf }}</td>
+  </ng-container>
+
+  <!-- COLUNA Ações-->
+  <ng-container matColumnDef="Acoes">
+    <th mat-header-cell *matHeaderCellDef>Ações</th>
+    <td mat-cell *matCellDef="let c">
+      <button mat-button color="accent" (click)="selecionar(c)"> <mat-icon>edit</mat-icon></button>
+      <button mat-button color="warn" (click)="delete(c.id)"><mat-icon>delete</mat-icon></button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="colunas"></tr>
@@ -32,7 +41,19 @@
 <!-- <button (click)="delete()">Deletar</button> -->
 
 <div *ngIf="curCliente">
-  <input type="text" [(ngModel)]="curCliente.nome" placeholder="Nome">
+
+  <mat-form-field class="form_field" color="accent">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" [(ngModel)]="curCliente.nome" placeholder="Nome">
+  </mat-form-field>
+
+  <mat-form-field class="form_field" color="accent">
+    <mat-label>CPF</mat-label>
+    <input matInput type="text" [(ngModel)]="curCliente.cpf" placeholder="CPF">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+  <!-- <input type="text" [(ngModel)]="curCliente.nome" placeholder="Nome">
   <br>
-  <input type="text" [(ngModel)]="curCliente.cpf" placeholder="CPF">
+  <input type="text" [(ngModel)]="curCliente.cpf" placeholder="CPF"> -->
 </div>
