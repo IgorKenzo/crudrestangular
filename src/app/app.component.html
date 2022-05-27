@@ -1,11 +1,32 @@
 <!-- <app-cliente></app-cliente> -->
 <mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <h1>Cadastro de Clientes</h1>
 </mat-toolbar>
 
+<mat-sidenav-container>
+  <mat-sidenav mode="side" #sidenav>
+    <mat-nav-list>
+      <a mat-list-item routerLink="cliente">
+        <mat-icon class="menu_icon">person</mat-icon>
+        Cliente
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<a routerLink="cliente"> Cliente</a>
+  <mat-sidenav-content>
+    <div style="min-height: calc(100vh - 64px); padding: 10px;">
+      <mat-card>
+        <router-outlet></router-outlet>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-<router-outlet>
 
-</router-outlet>
+
+
+
+

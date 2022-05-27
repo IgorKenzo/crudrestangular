@@ -11,6 +11,7 @@ export class ClienteComponent implements OnInit {
   clientes = Array<Cliente>();
   curCliente? : Cliente;
   editando : boolean = false;
+  colunas = ["Nome", "CPF"]
 
   constructor(private cliService: ClienteService) { }
 
